@@ -1,0 +1,103 @@
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="#" class="navbar-brand">Pctools<b> Ihab</b></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+      <div class="navbar-nav ml-auto action-buttons">
+        <form class="mr-5 form-inline my-2 my-lg-0" id="buscar">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" #nombre id="search">
+          <button class="btn btn-outline-info" (click)="search(nombre)"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="nav-item dropdown">
+
+          <div *ngIf="(userLogged|async)  || (this.user != null && this.user.length > 1);then nolog;else log"></div>
+
+          <ng-template #nolog>
+            <a *ngIf="userLogged|async as user" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">
+              <img *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top">
+              
+              {{user.displayName}} {{unm.username}}
+            </a>
+            <a *ngIf="(this.user != null && this.user.length > 1)" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">
+              <i class="fa fa-user-circle"></i>  {{this.user}}
+            </a>
+
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a>
+              <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Historial</a>
+              <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Configuracion</a>
+              <div class="dropdown-divider"></div>
+              <div *ngIf="this.interChange == 'google' || userLogged != null">
+                <a href="#" class="dropdown-item" (click)="logout_g()"><i class="material-icons">&#xE8AC;</i> Logout de Google</a>
+              </div>
+              <div *ngIf="this.interChange == 'bbdd'">
+                <a href="#" class="dropdown-item" (click)="logout_bbdd()"><i class="material-icons">&#xE8AC;</i> Logout Account</a>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template #log>
+
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4"><i class="fa fa-user-circle"></i>  Mi cuenta</a>
+            
+            <div class="dropdown-menu action-form">
+              <form action="/examples/actions/confirmation.php" method="post">
+                <p class="hint-text">Inicie sesión con su cuenta de redes sociales</p>
+                <div class="form-group social-btn clearfix">
+                  <a class="btn btn-secondary google-btn float-right" (click)="IngresarConGoogle()"><i class="fa fa-google"></i> Google</a>
+                  <a class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook me-2"></i>Facebook</a>
+                </div>
+                <div class="or-seperator" *ngIf="!bol;then logear;else registro"><b>or</b></div>
+                <ng-template #logear>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Usuario" required="required" #usuario>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Contraseña" required="required" #contrasena>
+                  </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Enviar"(click)="loger(usuario,contrasena)">
+                </ng-template>
+                <ng-template #registro>
+                    <p class="hint-text" [style]="error_text_style">{{error_text}}</p>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username" required="required" [style]="error" #username>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password" required="required" [style]="error" #password>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Confirm Password" required="required" [style]="error" #spassword>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email" required="required" [style]="error" #email>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#" (click)="redirectToTermsConditions()">Terms &amp; Conditions</a></label>
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block" value="Sign up" (click)="registrar(username,password,spassword,email)">
+                </ng-template>
+                <div class="botones form-group">
+                  <input type="submit" id="submit" class="btn btn-primary btn-block" value="Login" (click)="turnL()">
+                  <input type="submit" id="submit" class="btn btn-primary btn-block" value="Register" (click)="turnR()">
+                </div>
+                <div class="text-center mt-2">
+                  <a href="#">No recuerdas la contraseña?</a>
+                </div>
+              </form>
+            </div>
+
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>

@@ -1,0 +1,79 @@
+.zona{
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+p{
+  font-family: 'Roboto', sans-serif;
+}
+
+.familia{
+  color: grey;
+  font-size: 10px;  
+}
+
+.inf{
+  display: flex ;
+  flex-direction: row;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.number{
+  width: 20%;
+}
+.card {
+  width: 35%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 23px;
+  margin: 20px
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
+  box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
+  -webkit-transition: .3s;
+  transition: .3s
+}
+
+  /* text  */
+
+p {
+  width: 200px;
+  text-align: center;
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.overflow-visible {
+  white-space: initial;
+}
+
+.overflow-clip {
+  text-overflow: clip;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.overflow-string {
+  text-overflow: " [..]";
+}

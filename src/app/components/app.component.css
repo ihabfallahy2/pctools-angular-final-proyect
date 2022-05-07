@@ -1,0 +1,21 @@
+.container{
+    margin-top:1%;
+    padding: 1%;
+}
+
+form{
+    padding: 5%;
+}
+
+.botones{
+    display: flexbox;
+    flex-direction: column; 
+}
+
+#inog{
+    margin-right: 1%;
+}
+
+.tab-content{
+    margin: 5%;
+}
