@@ -17,9 +17,8 @@ export class NavbarComponent implements OnInit {
   error_text = "Rellena este formulario para crear tu cuenta!";
   error_text_style = "color: black;";
 
-  // usuarios:Usuarios[] = [];
   user:any = "";
-  interChange = "";
+  interChange :String | undefined;
 
   usuario = {
     email: "",
@@ -32,8 +31,8 @@ export class NavbarComponent implements OnInit {
   constructor(public ruta:Router,public product: ProductService,public authService: AuthService, public unm: UsernameService,private http : HttpClient) {
 
     this.user = localStorage.getItem('user');
+    console.log(this.userLogged);
     
-    console.log(this.interChange);
     console.log(this.user);
 
   }
@@ -41,7 +40,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   IngresarConGoogle() {
-    this.interChange = 'google';
     
     const { email, password } = this.usuario;
     this.authService.loginWithGoogle(email, password).then((res) => {
@@ -74,7 +72,6 @@ export class NavbarComponent implements OnInit {
 
   loger(username: HTMLInputElement, password: HTMLInputElement){
 
-    this.interChange = 'bbdd';
     this.authService.loginAuthBd(username.value,password.value);
     
     if(!localStorage.getItem('user')){
@@ -85,17 +82,17 @@ export class NavbarComponent implements OnInit {
 
       this.user = localStorage.getItem('user');
       
+      window.location.reload();
     }
-    
   }
 
   //logout
 
-  logout_g() {this.authService.logout()}
-
-  logout_bbdd() {
-    this.user = "";
+  logout() {
+    this.authService.logout();
     localStorage.removeItem('user');
+    this.user = "";
+    window.location.reload();
   }
 
   //logout

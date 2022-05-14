@@ -1,9 +1,8 @@
 import { Component} from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
@@ -20,7 +19,6 @@ export class ResultsComponent {
   
   constructor(public ruta:Router,public authService: AuthService,public find:ProductService,private cart:CartService) { 
     this.authService.getUserLogged().subscribe(res=>{
-      // console.log(res);
       this.userLogged = res;
     });
     console.log(this.find.estatus);

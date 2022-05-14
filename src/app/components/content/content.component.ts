@@ -20,10 +20,9 @@ export class ContentComponent {
     });
 
     this.user = localStorage.getItem('user');
-    // console.log(this.user);
   }
 
-  traspasoCart(cod:HTMLInputElement,number:HTMLInputElement){
+  addCesta(cod:HTMLInputElement,number:HTMLInputElement){
 
     this.cart.carro(cod.value,number.value);
     
