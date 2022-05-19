@@ -2,11 +2,11 @@
     <div *ngFor="let elemento of results">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <img class="card-img-top" src="../assets/{{elemento.nombre_corto}}.png" alt="Card image cap" />
-          <div class="inf">
-            <p class="overflow-ellipsis text-center">{{elemento.nombre_corto}}</p>
-            <p class="familia">{{elemento.familia}}</p>
-          </div>
+          <img class="card-img-top" src="../assets/{{elemento.nombre_corto}}.png" (click)="details(elemento.nombre_corto)">
+        <div class="inf">
+          <p class="overflow-ellipsis text-center" (click)="details(elemento.nombre_corto)">{{elemento.nombre_corto}} </p>
+          <p class="familia">{{elemento.familia}}</p>
+        </div>
           <hr />
           <h5 class="card-title text-center">{{elemento.pvp}} €</h5>
           <hr />
@@ -23,4 +23,3 @@
       </div>
     </div>
   </div>
-  

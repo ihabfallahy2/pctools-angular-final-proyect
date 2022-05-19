@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Usuarios } from "src/app/models/usuarios.models";
 import { AuthService } from "src/app/services/auth.service";
+import { CartService } from "src/app/services/cart.service";
 import { ProductService } from "src/app/services/product.service";
 import { UsernameService } from "src/app/services/username.service";
 
@@ -28,12 +29,12 @@ export class NavbarComponent implements OnInit {
 
   userLogged = this.authService.getUserLogged();
 
-  constructor(public ruta:Router,public product: ProductService,public authService: AuthService, public unm: UsernameService,private http : HttpClient) {
+  constructor(public ruta:Router,public product: ProductService,public authService: AuthService, public unm: UsernameService,private http : HttpClient,public cart:CartService) {
 
     this.user = localStorage.getItem('user');
-    console.log(this.userLogged);
+    // console.log(this.userLogged);
     
-    console.log(this.user);
+    // console.log(this.user);
 
   }
 
@@ -111,4 +112,9 @@ export class NavbarComponent implements OnInit {
   redirectToTermsConditions(){
     this.ruta.navigate(['terms']);
   }
+
+  cart_direction(){
+    this.ruta.navigate(['cart']);
+  }
+
 }

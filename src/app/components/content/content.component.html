@@ -2,7 +2,7 @@
   <div *ngFor="let elemento of product.ntt">
     <div class="card" style="width: 19rem;">
       <div class="card-body">
-        <img class="card-img-top" src="../assets/{{elemento.nombre_corto}}.png" alt="Card image cap" (click)="details(elemento.nombre_corto)"/>
+        <img class="card-img-top" src="../assets/{{elemento.nombre_corto}}.png" (click)="details(elemento.nombre_corto)">
         <div class="inf">
           <p class="overflow-ellipsis text-center" (click)="details(elemento.nombre_corto)">{{elemento.nombre_corto}} </p>
           <p class="familia">{{elemento.familia}}</p>
@@ -14,8 +14,9 @@
             <hr />
           <form>
             <input type="hidden" value="{{elemento.cod}}" #cod />
-              <input type="number" class="number form-control" placeholder="0" #number />
-              <input type="submit" class="btn btn-primary" value="Añadir" (click)="addCesta(cod,number)" />
+            <input type="hidden" value="{{elemento.pvp}}" #pvp />
+              <input type="number" class="number form-control" placeholder="1" value="1" #number />
+              <input type="submit" class="btn btn-primary" value="Añadir" (click)="addToCesta(cod,number,pvp)" />
             </form>
           </div>
         </div>

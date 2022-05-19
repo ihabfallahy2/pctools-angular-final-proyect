@@ -22,9 +22,9 @@ export class ContentComponent {
     this.user = localStorage.getItem('user');
   }
 
-  addCesta(cod:HTMLInputElement,number:HTMLInputElement){
+  addToCesta(cod:HTMLInputElement,number:HTMLInputElement,pvp:HTMLInputElement){
 
-    this.cart.carro(cod.value,number.value);
+    this.cart.createCart(cod.value,number.value,pvp.value);
     
   }
 

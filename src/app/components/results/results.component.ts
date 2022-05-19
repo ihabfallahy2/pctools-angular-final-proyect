@@ -33,8 +33,12 @@ export class ResultsComponent {
   
   traspasoCart(cod:HTMLInputElement,number:HTMLInputElement){
     
-    this.cart.carro(cod.value,number.value);
+    // this.cart.carro(cod.value,number.value);
     
   }
 
+  details(cod:string){
+    this.find.detailsCod = cod;
+    this.ruta.navigate(['details']);
+  }
 }

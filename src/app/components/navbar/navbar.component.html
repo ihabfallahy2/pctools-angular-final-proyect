@@ -16,6 +16,12 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" #nombre id="search">
           <button class="btn btn-outline-info" (click)="search(nombre)"><i class="fa fa-search"></i></button>
         </form>
+
+        <button class="btn" (click)="cart_direction()">
+          <img src="assets/icons/shopping-cart.png"/>      
+          <span class='badge badge-warning' id='lblCartCount'>{{this.cart.cantidad}}</span>
+        </button>
+
         <div class="nav-item dropdown">
 
           <div *ngIf="(userLogged|async)  || (this.user != null && this.user.length > 1);then nolog;else log"></div>
@@ -30,7 +36,7 @@
               <i class="fa fa-user-circle"></i>  {{this.user}}
             </a>
 
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right" id="afterLoginDropdown">
               <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a>
               <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Historial</a>
               <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Configuracion</a>
@@ -40,8 +46,9 @@
           </ng-template>
 
           <ng-template #log>
+            <button data-toggle="dropdown" class="btn dropdown-toggle mr-4"><i class="fa fa-user-circle"></i>  Mi cuenta</button>
 
-            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4"><i class="fa fa-user-circle"></i>  Mi cuenta</a>
+            <!-- <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4"><i class="fa fa-user-circle"></i>  Mi cuenta</a> -->
             
             <div class="dropdown-menu action-form">
               <form action="/examples/actions/confirmation.php" method="post">
@@ -75,7 +82,7 @@
                       <input type="email" class="form-control" placeholder="Email" required="required" [style]="error" #email>
                     </div>
                     <div class="form-group">
-                      <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#" (click)="redirectToTermsConditions()">Terms &amp; Conditions</a></label>
+                      <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a (click)="redirectToTermsConditions()">Terms &amp; Conditions</a></label>
                     </div>
                     <input type="submit" class="btn btn-primary btn-block" value="Sign up" (click)="registrar(username,password,spassword,email)">
                 </ng-template>

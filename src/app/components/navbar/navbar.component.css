@@ -218,3 +218,34 @@ body {
 #buscar button{
 	border: none;
 }
+
+/*
+*icono cart en navbar
+*/
+.btn img{
+    width: 30px;
+}
+
+#lblCartCount {
+	font-size: 12px;
+	background: #31D2F2;
+	color: #fff;
+	padding: 0 5px;
+	vertical-align: top;
+	margin-left: -10px;
+}
+
+/*
+*icono cart en navbar
+*/
+
+#afterLoginDropdown{
+	padding-top: 8%;
+}
+
+#navbarCollapse{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content:center;
+}

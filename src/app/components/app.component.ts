@@ -10,7 +10,7 @@ import { UsernameService } from "../services/username.service";
 export class AppComponent {
 
   
-  constructor(private authService: AuthService,private unm : UsernameService) {
+  constructor() {
     
   }
   

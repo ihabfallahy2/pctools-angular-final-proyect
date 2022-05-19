@@ -1,7 +1,7 @@
 .zona{
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
+  display: flex ;
+  flex-direction: row ;
+  flex-wrap: wrap ;
 }
 
 p{
